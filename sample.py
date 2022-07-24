@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Twitter_Frontend_API import Client
+from Twitter_Frontend_API import Client, API
 
 import time
 from tinydb import TinyDB, Query, where
@@ -7,11 +7,29 @@ import json
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-import seaborn as sns
-from BotHelper import JsonSearch
-from Twitter_Frontend_API import API
 
-sns.set()
+import os
+from dotenv import load_dotenv
+import logging
+
+lg = logging.getLogger(__name__)
+
+# 環境変数を参照
+load_dotenv()
+SHEET_NAME = os.getenv('SHEET_NAME')
+
+
+
+from BotHelper import JsonSearch, get_sheet_with_pd, set_sheet_with_pd, writeSheet
+
+
+sheetname, col_name, row_name, input_val = SHEET_NAME, "badsotaru94", "api", "ok"
+
+df = get_sheet_with_pd(sheetname=SHEET_NAME)
+
+import pdb;pdb.set_trace()
+writeSheet(sheetname, col_name, row_name, input_val)
+
 #ログインと認証情報の定義
 #認証情報は辞書形式での定義
 auth = {'auth_token': '----------', 'ct0': '-----------'}
@@ -47,11 +65,6 @@ usr = api.user_info(screen_name='1111')
 import pdb;pdb.set_trace()
 
 
-# img_path = './img101.jpg'
-# res = api.update_profile_image(img_path)
-# resp = api.update_profile(data=profile_data)
-# api.change_language()
-# api.change_id("cherry56boy")
 
 
 dms = api.get_dm()

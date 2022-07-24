@@ -2,3 +2,12 @@ requests
 lxml
 fake_useragent
 bs4
+gspread
+pandas
+gspread_dataframe
+pysnooper
+dotenv
+pathlib
+selenium
+webdriver_manager
+undetected_chromedriver
